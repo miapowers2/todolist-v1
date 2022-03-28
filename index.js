@@ -29,11 +29,26 @@ app.use(express.static("public"));
 // default html file in web server
 app.get("/", function(req, res) {
 
+  res.redirect("/fun");
+    
+});
+
+app.get("/fun", function(req, res) {
+
     //get the system date from the getDate function exported by the date.js file
     let day = date.getDate();
     
     // use EJS render to display the day and the To Do List
-    res.render("list", {listTitle: day, newListItems: items});
+    res.render("list", {listTitle: "Fun List " + day, newListItems: funItems});
+    
+});
+app.get("/weekend", function(req, res) {
+
+    //get the system date from the getDate function exported by the date.js file
+    let day = date.getDate();
+    
+    // use EJS render to display the day and the To Do List
+    res.render("list", {listTitle: "Weekend List " + day, newListItems: weekendItems});
     
 });
 
